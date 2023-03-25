@@ -15,5 +15,7 @@ very messy as I figure out the basics.
 
 ## Dependancies
 - TwitchLib
+
 Install via NuGet Package Manager
+
 `Install-Package TwitchLib`
