@@ -1,4 +1,4 @@
-﻿### A work-in-progress streamer companion AI written with C#
+﻿## A work-in-progress streamer companion AI written with C#
 
 Goals:
 - Periodically read twitch chat at certain intervals and pass to generative-text AI
@@ -13,5 +13,7 @@ I am fairly inexperienced when it comes to programming, I will be learning along
 the creation of this project and hopefully improve over time. The initial commits may be
 very messy as I figure out the basics. 
 
-### Dependancies
+## Dependancies
 - TwitchLib
+Install via NuGet Package Manager
+`Install-Package TwitchLib`
