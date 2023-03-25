@@ -10,7 +10,7 @@ class Program
         chat.Start();
 
         // Wait for user input to exit
-        Console.WriteLine("Press 'M' to print the most recent message. Press any other key to exit.");
+        Console.WriteLine("Press 'M' to print the most recent message. Ctrl + C to exit");
         while (true)
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey();
