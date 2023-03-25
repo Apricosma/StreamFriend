@@ -21,6 +21,8 @@ class Program
                 if (lastMessage != null)
                 {
                     Console.WriteLine($": Last message: {lastMessage}");
+                    chat.ClearLastMessage();
+                    
                 }
                 else
                 {

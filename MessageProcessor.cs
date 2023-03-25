@@ -19,8 +19,6 @@ namespace StreamFriend
             }
 
             _lastMessage = e.ChatMessage.Message;
-
-            _isConsumed = true;
         }
 
         public string GetLastMessage()
@@ -35,6 +33,7 @@ namespace StreamFriend
         public void ClearLastMessage()
         {
             _lastMessage = null;
+            _isConsumed = false;
         }
     }
 }
