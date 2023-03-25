@@ -3,14 +3,14 @@ using TwitchLib.Client;
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         TwitchChat chat = new TwitchChat();
 
         chat.Start();
 
         // Wait for user input to exit
-        Console.WriteLine("Press 'M' to print the most recent message. Ctrl + C to exit");
+        Console.WriteLine("Press 'M' to print the most recent message. Ctrl + C to exit\n");
         while (true)
         {
             ConsoleKeyInfo keyInfo = Console.ReadKey();
@@ -20,7 +20,13 @@ class Program
                 string lastMessage = chat.GetLastMessage();
                 if (lastMessage != null)
                 {
-                    Console.WriteLine($": Last message: {lastMessage}");
+                    Console.WriteLine($": Sending recent message: {lastMessage}\n");
+
+                    var openAIGpt = new OpenAIGpt(Auth.OpenAIGptKey, Auth.OpenAIModelId);
+                    var response = await openAIGpt.GenerateResponse(lastMessage);
+
+                    Console.WriteLine($"Response {response}");
+
                     chat.ClearLastMessage();
                     
                 }

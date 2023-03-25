@@ -11,8 +11,6 @@ namespace StreamFriend
 
         public void HandleMessage(object sender, OnMessageReceivedArgs e)
         {
-            Console.WriteLine($"Recieved message: {e.ChatMessage.Message}");
-
             if (_isConsumed)
             {
                 return;
