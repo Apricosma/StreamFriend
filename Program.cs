@@ -20,11 +20,11 @@ class Program
                 string lastMessage = chat.GetLastMessage();
                 if (lastMessage != null)
                 {
-                    Console.WriteLine($"Last message: {lastMessage}");
+                    Console.WriteLine($": Last message: {lastMessage}");
                 }
                 else
                 {
-                    Console.WriteLine("No messages received yet.");
+                    Console.WriteLine(": No messages received yet.");
                 }
             }
             else
