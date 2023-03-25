@@ -11,13 +11,13 @@ using TwitchLib.PubSub.Models.Responses.Messages.AutomodCaughtMessage;
 
 class TwitchChat
 {
-    public static void GetChat()
-    {
-        var api = new TwitchAPI();
-        var client = new TwitchClient();
+    private TwitchClient client;
+    private MessageProcessor processor;
 
-        api.Settings.ClientId = Auth.TwitchClientId;
-        api.Settings.AccessToken = Auth.TwitchAccessToken;
+    public TwitchChat()
+    {
+        client = new TwitchClient();
+        processor = new MessageProcessor();
 
         client.Initialize(new ConnectionCredentials(Auth.TwitchAppName, Auth.OAuthToken));
 
@@ -32,13 +32,27 @@ class TwitchChat
             {
                 Console.WriteLine(ex.Message);
             }
+
+            client.OnMessageReceived += (sender, e) =>
+            {
+                Console.WriteLine($"[{e.ChatMessage.Username}] {e.ChatMessage.Message}");
+                processor.HandleMessage(sender, e);
+            };
         };
+    }
 
+    public void Start()
+    {
         client.Connect();
+    }
+    
+    public string GetLastMessage()
+    {
+        return processor.GetLastMessage();
+    }
 
-        client.OnMessageReceived += (sender, e) =>
-        {
-            Console.WriteLine($"[{e.ChatMessage.Username}] {e.ChatMessage.Message}");
-        };        
+    public void ClearLastMessage()
+    {
+        processor.ClearLastMessage();
     }
 }
