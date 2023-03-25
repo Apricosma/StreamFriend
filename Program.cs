@@ -1,8 +1,11 @@
-﻿class Program
+﻿using StreamFriend;
+using TwitchLib.Client;
+
+class Program
 {
     static void Main(string[] args)
     {
-        TwitchChat.GetChat();
+        TwitchChat.GetChat();        
 
         // exit key Ctrl + C
         var exitSignal = new AutoResetEvent(false);
@@ -15,9 +18,4 @@
 
         exitSignal.WaitOne();
     }
-
-    //private static void Console_CancelKeyPress(object? sender, ConsoleCancelEventArgs e)
-    //{
-    //    throw new NotImplementedException();
-    //}
 }

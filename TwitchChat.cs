@@ -23,7 +23,15 @@ class TwitchChat
 
         client.OnConnected += (sender, e) =>
         {
-            client.JoinChannel("Damalia_VT");
+            try
+            {
+                client.JoinChannel("Damalia_VT");
+                Console.WriteLine("Successfully joined channel");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         };
 
         client.Connect();
@@ -31,9 +39,6 @@ class TwitchChat
         client.OnMessageReceived += (sender, e) =>
         {
             Console.WriteLine($"[{e.ChatMessage.Username}] {e.ChatMessage.Message}");
-        };
-
-        
+        };        
     }
-
 }
